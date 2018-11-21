@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Coffeeshop</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+<h:body styleClass="body">
+    <h:form>
+        <p:graphicImage library="img" name="hhhhh.jpg"/>
+        <div>
+        <h:commandButton value="Создать" action="create" style="width: 1530px; height:100px;border-radius: 3px;padding-bottom: 10px;background-color:orange;" />
+        </div>
+        <p:dataTable var="coffee" value="#{cdiCoffeeBean.coffeeList}" id="table" style="margin-top: 10px">
+            <p:column headerText="Номер заказа">
+                <h:outputText value="#{coffee.id}" />
+            </p:column>
+
+            <p:column headerText="Название">
+                <h:outputText value="#{coffee.name}" />
+            </p:column>
+
+            <p:column headerText="Цена">
+                <h:outputText value="#{coffee.price}" />
+            </p:column>
+
+            <p:column headerText="Количество">
+                <h:outputText value="#{coffee.amount}" />
+            </p:column>
+
+            <p:column headerText="Дата">
+                <h:outputText value="#{coffee.date}" />
+            </p:column>
+
+            <p:column headerText="Время доставки (от)">
+                <h:outputText value="#{coffee.timefrom}" />
+            </p:column>
+
+            <p:column headerText="Время доставки (до)">
+                <h:outputText value="#{coffee.timeto}" />
+            </p:column>
+
+            <p:column headerText="Доставка">
+                <h:outputText value="#{coffee.delivery}" />
+            </p:column>
+
+            <p:column headerText="Суммаа заказа">
+                <h:outputText value="#{coffee.sum}" />
+            </p:column>
+
+            <p:column headerText="Редактировать/Изменить">
+                <h:commandButton value="Изменить" actionListener="#{cdiCoffeeBean.setEditingCoffee(coffee)}"
+                                 action="edit"/>
+
+                <h:commandButton value="Удалить" actionListener="#{cdiCoffeeBean.setDeleteCoffee(coffee)}"
+                                 action="delete"/>
+            </p:column>
+
+        </p:dataTable>
+    </h:form>
+  <!--  <p:graphicImage library="img" name="h.jpg"/>-->
+</h:body>
+</html>

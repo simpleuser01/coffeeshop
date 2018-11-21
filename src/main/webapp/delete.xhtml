@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>
+        Create order
+    </title>
+</h:head>
+<h:body>
+    <p:graphicImage library="img" name="hhhhh.jpg"/>
+    <h:form>
+        <div>
+
+            <h:outputText value="Номер заказа"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.id}" style="margin-left: 20px" />
+
+                <br/>
+            <h:outputText value="Название"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.name}" style="margin-left: 20px"/>
+        </div>
+        <div>
+        <br/>
+            <h:outputText value="Цена"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.price}" style="margin-left: 20px"/>
+            <h:outputText value="/кг" style="margin-left: 5px"/>
+
+        <br/>
+            <h:outputText value="Количество"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.amount}" style="margin-left: 20px"/>
+        </div>
+        <div>
+        <br/>
+            <h:outputText value="Дата"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.date}" style="margin-left: 20px"/>
+
+        <br/>
+            <h:outputText value="Время доставки (от)"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.timefrom}" style="margin-left: 20px"/>
+
+        <br/>
+            <h:outputText value="Время доставки (до)"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.timeto}" style="margin-left: 20px"/>
+
+        <br/>
+            <h:outputText value="Доставка"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.delivery}}" style="margin-left: 20px"/>
+        </div>
+        <br/>
+            <h:outputText value="Суммаа заказа"/>
+                <h:outputText value="#{cdiCoffeeBean.deleteCoffee.sum}" style="margin-left: 20px"/>
+
+    <div>
+        <h:commandButton value="Удалить" actionListener="#{cdiCoffeeBean.delete(cdiCoffeeBean.deleteCoffee.id)}" action="main"
+                         update = "table" style="width: 80px;height: 40px"/>
+        <h:commandButton value="Отмена" action="main" style="width: 70px;height: 40px;margin-left: 20px"/>
+    </div>
+    </h:form>
+</h:body>
+</html>

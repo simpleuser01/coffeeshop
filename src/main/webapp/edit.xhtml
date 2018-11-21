@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>
+        Create order
+    </title>
+</h:head>
+<h:body>
+    <p:graphicImage library="img" name="hhhhh.jpg"/>
+    <h:form>
+        <div>
+        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+            <p:outputLabel for="coffee" value="Виды кофе:" />
+            <p:selectOneMenu id="coffee" value="#{cdiCoffeeBean.editingCoffee.name}" style="width:125px">
+                <f:selectItem itemLabel="Select One" itemValue="" />
+                <f:selectItems value="#{cdiCoffeeBean.coffeeTypes}"/>
+                <f:ajax execute="coffee" render="price" listener="#{cdiCoffeeBean.edit()}"/>
+            </p:selectOneMenu>
+        </h:panelGrid>
+
+        <h:outputText value="Цена"/>
+        <h:outputText id="price" value="#{cdiCoffeeBean.editingCoffee.price}" style="margin-left: 20px"/>
+            <h:outputText value="/кг" style="margin-left: 5px"/>
+        <br/>
+        <h:outputText value="Количество"/>
+        <h:inputText id="amount" value="#{cdiCoffeeBean.editingCoffee.amount}" style="margin-left: 20px">
+            <f:validateLongRange minimum="100"/>
+            <f:ajax execute="amount" render="sum" listener="#{cdiCoffeeBean.editSum()}"/>
+        </h:inputText>
+        </div>
+        <br/>
+        <div>
+        <h:outputText value="Дата"/>
+        <p:inputMask value="#{cdiCoffeeBean.editingCoffee.date}" mask="9999-99-99" style="margin-left: 20px"/>
+
+        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="1">
+            <p:outputLabel value="Доставка: " />
+            <br/>
+            <p:selectBooleanCheckbox    id = "courier" value="#{cdiCoffeeBean.editingCoffee.courier}">
+                <f:ajax execute="courier" render="sum" listener="#{cdiCoffeeBean.editCourier()}"/>
+            </p:selectBooleanCheckbox>
+            <h:outputText value="Курьером"/>
+            <p:selectBooleanCheckbox id = "self" value="#{cdiCoffeeBean.editingCoffee.self}">
+                <f:ajax execute="self" render="sum" listener="#{cdiCoffeeBean.editSelf()}"/>
+            </p:selectBooleanCheckbox>
+            <h:outputText value="Самостоятельно"/>
+
+        </h:panelGrid>
+
+        <h:outputText value="Время доставки (от)"/>
+        <p:inputMask value="#{cdiCoffeeBean.editingCoffee.timefrom}" mask="99:99" style="margin-left: 20px"/>
+        <br/>
+        <h:outputText value="Время доставки (до)"/>
+        <p:inputMask value="#{cdiCoffeeBean.editingCoffee.timeto}" mask="99:99" style="margin-left: 20px"/>
+        <br/>
+        <h:outputText value="Сумма"/>
+        <h:outputText id = "sum" value="#{cdiCoffeeBean.editingCoffee.sum}" style="margin-left: 20px"/>
+        <br/>
+        </div>
+        <h:commandButton value="Сохранить" actionListener="#{cdiCoffeeBean.saveProduct()}" update="table"
+                         action="main" style="width: 80px;height: 40px"/>
+        <h:commandButton value="Отмена"  action="main" style="width: 70px;height: 40px;margin-left: 20px"/>
+    </h:form>
+</h:body>
+</html>
